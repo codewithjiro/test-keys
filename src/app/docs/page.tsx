@@ -6,7 +6,7 @@ import { Button } from "~/components/ui/button";
 import { Card, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { motion } from "framer-motion";
-import { BookOpen, KeyRound, Shield, Rocket } from "lucide-react";
+import { BookOpen, KeyRound, Shield, Rocket, ArrowLeft } from "lucide-react";
 
 export default function DocsPage() {
   const router = useRouter();
@@ -86,6 +86,7 @@ export default function DocsPage() {
             className="rounded-lg bg-neutral-800 text-gray-200 shadow-md transition hover:bg-neutral-700"
             onClick={() => router.push("/dashboard")}
           >
+            <ArrowLeft size={16} />
             Back to Dashboard
           </Button>
         </header>

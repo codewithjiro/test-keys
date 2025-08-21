@@ -22,7 +22,11 @@ export default function Page() {
     <div className="flex min-h-screen flex-col bg-[#1e1c2a] text-white">
       {/* Navbar */}
       <header className="flex items-center justify-between border-b border-gray-800 px-8 py-4">
-        <h1 className="text-2xl font-bold text-yellow-400">KeyVault</h1>
+        <div className="flex items-center gap-2">
+          <Shield className="h-6 w-6 text-yellow-400" />
+          <h1 className="text-2xl font-bold text-yellow-400">KeyVault</h1>
+        </div>
+
         <SignInButton>
           <Button className="rounded-lg bg-yellow-500 font-semibold text-black transition hover:bg-yellow-400">
             Sign In
