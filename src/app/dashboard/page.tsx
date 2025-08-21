@@ -35,7 +35,11 @@ import {
   Plus,
   KeyRound,
   Shield,
+  ArchiveRestore,
+  KeySquare,
 } from "lucide-react";
+
+
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -60,7 +64,7 @@ export default function DashboardPage() {
     if (!newKeyName.trim()) {
       toast.error("Please enter a name for your key.");
       return;
-    }
+    } 
 
     const newKey = {
       id: Date.now(),
@@ -73,7 +77,6 @@ export default function DashboardPage() {
     setGeneratedKey(FIXED_KEY);
     toast.success(`API Key "${newKey.name}" generated!`);
     setNewKeyName("");
-
     setGenerateDialogOpen(false);
   };
 
@@ -107,6 +110,11 @@ export default function DashboardPage() {
     toast.error("API Key revoked!");
   };
 
+  const restoreKey = (id: number) => {
+    setKeys(keys.map((k) => (k.id === id ? { ...k, status: "Active" } : k)));
+    toast.success("API Key restored!");
+  };
+
   return (
     <AuthGuard>
       <div className="min-h-screen space-y-10 bg-gradient-to-b from-[#12101a] to-[#1a1825] px-8 py-10 text-gray-100">
@@ -132,7 +140,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Mobile-Friendly Welcome Section */}
+          {/* Welcome Section */}
           <div className="flex flex-col items-center gap-6 rounded-3xl bg-gradient-to-r from-[#1e1c2a]/80 to-[#2c2937]/80 p-6 shadow-2xl backdrop-blur-md sm:p-8 lg:flex-row">
             {/* Left: Text */}
             <div className="flex-1 space-y-3 text-center text-gray-200 lg:text-left">
@@ -233,7 +241,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Keys Section - Modern Card Layout */}
+        {/* Keys Section */}
         <Card className="rounded-2xl border border-gray-700/60 bg-[#1e1c2a]/80 shadow-xl backdrop-blur-md transition hover:shadow-yellow-500/10">
           <CardHeader>
             <h2 className="text-lg font-semibold">Your Keys</h2>
@@ -337,6 +345,17 @@ export default function DashboardPage() {
                           onClick={() => revokeKey(k.id)}
                         >
                           <Trash2 size={16} className="mr-1" /> Revoke
+                        </Button>
+                      )}
+
+                      {k.status === "Revoked" && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="flex-1 rounded-lg border-gray-700 hover:bg-gray-700"
+                          onClick={() => restoreKey(k.id)}
+                        >
+                          <ArchiveRestore size={16} className="mr-1" /> Restore
                         </Button>
                       )}
                     </div>

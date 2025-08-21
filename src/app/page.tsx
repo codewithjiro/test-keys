@@ -4,7 +4,7 @@ import { SignInButton, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
 import { useEffect } from "react";
-import { Shield, Key, Zap, Mail, Phone, MapPin } from "lucide-react";
+import { Shield, Key, Zap, Mail, Phone, MapPin, KeySquare } from "lucide-react";
 
 export default function Page() {
   const { isSignedIn, isLoaded } = useUser();
@@ -29,9 +29,11 @@ export default function Page() {
 
         <SignInButton>
           <Button className="rounded-lg bg-yellow-500 font-semibold text-black transition hover:bg-yellow-400">
+            <KeySquare/>
             Sign In
           </Button>
         </SignInButton>
+        
       </header>
 
       {/* Hero Section */}
