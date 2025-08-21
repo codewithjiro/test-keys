@@ -1,4 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import "../styles/globals.css";
 
 export const metadata = {
@@ -18,7 +19,7 @@ export default function RootLayout({
           afterSignInUrl="/dashboard"
           afterSignOutUrl="/"
           appearance={{
-            baseTheme: "dark" // just a string in the latest App Router version
+            baseTheme: dark
           }}
         >
           {children}

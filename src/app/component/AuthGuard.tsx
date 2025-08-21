@@ -10,7 +10,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
-      router.push('/sign-in') // redirect to Clerk sign-in page
+      router.push('/sign-in') 
     }
   }, [isLoaded, isSignedIn, router])
 
